@@ -19,11 +19,11 @@ const App: React.FC = () => {
               Athletes
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/add-athlete"} className="nav-link">
               Add
             </Link>
-          </li>
+          </li> */}
         </div>
       </nav>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Route, Link } from "react-router-dom";
 import AthleteDataService from "../services/AthleteService";
 import IAthleteData from '../types/Athlete';
 
@@ -9,6 +9,8 @@ const TutorialsList: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [searchId, setSearchId] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const handleClick = () => navigate('/add-athlete');
 
   useEffect(() => {
     retrieveAthletes();
@@ -66,6 +68,7 @@ const TutorialsList: React.FC = () => {
         console.log(e);
       });
   };
+  
 
   return ( 
     <div className="list row">
@@ -107,12 +110,16 @@ const TutorialsList: React.FC = () => {
             ))}
         </ul>
 
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllAthletes}
-        >
-          Remove All
+        
+       
+            <button className="m-3 btn btn-sm btn-success" onClick={handleClick}>
+            Add Athlete 
         </button>
+
+        <button className="m-3 btn btn-sm btn-danger" onClick={removeAllAthletes}>
+          Delete All Athletes
+        </button>
+      
       </div>
       <div className="col-md-6">
         {currentAthlete ? (
