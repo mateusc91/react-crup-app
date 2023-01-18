@@ -11,16 +11,16 @@ const App: React.FC = () => {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          Athletes-app
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/tutorials"} className="nav-link">
+            <Link to={"/athletes"} className="nav-link">
               Athletes
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/add"} className="nav-link">
+            <Link to={"/add-athlete"} className="nav-link">
               Add
             </Link>
           </li>
@@ -30,8 +30,9 @@ const App: React.FC = () => {
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<AthletesList/>} />
-          <Route path="/tutorials" element={<AthletesList/>} />
-          <Route path="/add" element={<AddAthlete/>} />
+          <Route path="/athletes" element={<AthletesList/>} />
+          <Route path="/add-athlete" element={<AddAthlete/>} />
+          <Route path="/delete-all-athletes" element={<AthletesList/>} />
           <Route path="/tutorials/:id" element={<Athlete/>} />
         </Routes>
       </div>

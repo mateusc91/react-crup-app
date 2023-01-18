@@ -8,6 +8,7 @@ const TutorialsList: React.FC = () => {
   const [currentAthlete, setCurrentAthlete] = useState<IAthleteData | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [searchId, setSearchId] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     retrieveAthletes();
@@ -44,7 +45,9 @@ const TutorialsList: React.FC = () => {
     AthleteDataService.removeAll()
       .then((response: any) => {
         console.log(response.data);
+        setSubmitted(true);
         refreshList();
+   
       })
       .catch((e: Error) => {
         console.log(e);
@@ -67,11 +70,11 @@ const TutorialsList: React.FC = () => {
   return ( 
     <div className="list row">
       <div className="col-md-8">
-        <div className="input-group mb-3">
+        {/* <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
-            placeholder="Search by title"
+            placeholder="Search by name"
             value={searchId}
             onChange={onChangeSearchTitle}
           />
@@ -84,10 +87,10 @@ const TutorialsList: React.FC = () => {
               Search
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="col-md-6">
-        <h4>Tutorials List</h4>
+        <h4>Athletes List</h4>
 
         <ul className="list-group">
           {athletes &&
@@ -114,7 +117,13 @@ const TutorialsList: React.FC = () => {
       <div className="col-md-6">
         {currentAthlete ? (
           <div>
-            <h4>Name</h4>
+            <h4>Athlete info</h4>
+            <div>
+              <label>
+                <strong>Id:</strong>
+              </label>{" "}
+              {currentAthlete.id}
+            </div>
             <div>
               <label>
                 <strong>Name:</strong>
@@ -137,7 +146,6 @@ const TutorialsList: React.FC = () => {
         ) : (
           <div>
             <br />
-            <p>Please click on a Athlete...</p>
           </div>
         )}
       </div>

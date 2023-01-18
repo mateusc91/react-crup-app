@@ -22,7 +22,7 @@ const remove = (id: any) => {
 };
 
 const removeAll = () => {
-  return http.delete<any>(`/athletes/delete-athletes`);
+  return http.delete<any>(`/delete-athletes`);
 };
 
 const findById = (id: string) => {
